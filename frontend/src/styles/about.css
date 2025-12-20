@@ -1,0 +1,75 @@
+.about-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.about-container h1 {
+    text-align: center;
+    color: #123da9;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.about-container h2 {
+    color: #123da9;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.about-container h3 {
+    color: #0f2a80;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.about-container p {
+    margin-bottom: 15px;
+}
+
+.features ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+.tech-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.tech-card {
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: 1 1 280px;
+
+    min-width: 250px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tech-card ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+
+@media (max-width: 768px) {
+    .tech-cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

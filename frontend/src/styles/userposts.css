@@ -1,0 +1,108 @@
+.user-posts-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.post-card {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-card h3 {
+    margin: 0 0 10px 0;
+    color: #123da9;
+}
+
+.post-card p {
+    margin-bottom: 8px;
+}
+
+.post-card small {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Buttons */
+.primary-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #123da9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.primary-btn:hover {
+    background-color: #0f2a80;
+}
+
+.delete-btn {
+    padding: 8px 12px;
+    background-color: #b00020;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #800016;
+}
+
+.no-posts {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.error {
+    color: #b00020;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.primary-btn,
+.delete-btn {
+    width: auto;
+    /* change from 100% to auto */
+    padding: 8px 16px;
+    /* add horizontal padding for nice size */
+    display: inline-block;
+    /* ensure it only takes needed space */
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background-color: #0f2a80;
+}
+
+.delete-btn {
+    background-color: #b00020;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #800016;
+}

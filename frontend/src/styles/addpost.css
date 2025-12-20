@@ -1,0 +1,79 @@
+.addpost-container {
+    max-width: 400px;
+    margin: 70px auto;
+    padding: 30px 25px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.addpost-container h2 {
+    text-align: center;
+    color: #123da9;
+    margin-bottom: 25px;
+}
+
+.addpost-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.addpost-container input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.content {
+    padding: 15px;
+    min-height: 150px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    resize: vertical;
+    resize: none;
+}
+
+.content:focus {
+    border-color: #123da9;
+}
+
+
+.addpost-container input:focus {
+    border: 1px solid #123da9;
+}
+
+.addpost-container button {
+    padding: 10px 20px;
+    width: auto;
+    background-color: #123da9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    align-self: center;
+    /* center the button */
+    transition: background-color 0.2s;
+}
+
+.addpost-container button:hover {
+    background-color: #0f2a80;
+}
+
+.addpost-container button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+.addpost-container p.error {
+    color: #b00020;
+    text-align: center;
+    margin-top: 10px;
+}

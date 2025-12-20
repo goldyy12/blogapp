@@ -1,0 +1,117 @@
+.navbar {
+    background: linear-gradient(135deg, #0b1324, #111929);
+    padding: 14px 24px;
+}
+
+.navbar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo h4 {
+    color: white;
+    margin: 0;
+}
+
+/* LINKS */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-link {
+    position: relative;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 4px 0;
+    transition: color 0.25s ease;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+/* animated underline */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transition: width 0.25s ease;
+}
+
+/* active link */
+.nav-link.active {
+    color: white;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+}
+
+/* write post button */
+.writepost {
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: white;
+}
+
+.writepost::after {
+    display: none;
+}
+
+/* USER MENU */
+.menu-container {
+    position: relative;
+}
+
+.menu {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: 48px;
+    background: #0f172a;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.menu-dropdown button {
+    background: none;
+    border: none;
+    color: #cbd5e1;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.menu-dropdown button:hover {
+    background: #1e293b;
+    color: white;
+}

@@ -1,0 +1,35 @@
+import express from "express";
+import {
+    getPosts,
+    getPost,
+    createPost,
+    updatePost,
+    deletePost,
+    publishPost,
+    getPostsByUser
+} from "../controllers/postController.js";
+import { authenticateToken } from "../middleware/auth.js";
+
+const router = express.Router();
+
+function requireAuthor(req, res, next) {
+    if (req.user.role !== "AUTHOR") {
+        return res.status(403).json({ error: "Forbidden" });
+    }
+    next();
+}
+
+router.get("/", getPosts);
+
+router.get("/:id", getPost);
+router.get("/user/:userId", getPostsByUser);
+
+router.delete("/:id", authenticateToken, deletePost);
+
+
+router.post("/", authenticateToken, createPost);
+router.put("/:id", authenticateToken, updatePost);
+
+router.put("/:id/publish", authenticateToken, publishPost);
+
+export default router;
