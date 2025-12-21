@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="navbar">
             <div className="navbar-content">
                 <Link to="/posts" className="logo">
-                    <h4>Blog App</h4>
+                    <h3>Blog App</h3>
                 </Link>
 
                 <div className="nav-links">

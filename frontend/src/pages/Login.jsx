@@ -24,10 +24,11 @@ export default function Login() {
                 { email, password }
             );
 
-            login(res.data.token); // 🔥 THIS updates context
-            navigate("/posts");     // UI updates instantly
+            login(res.data.token);
+            navigate("/posts");
         } catch (error) {
-            setError(error.response?.data?.message || "Login failed");
+            setError(error.response?.data?.error || "Login failed");
+            console.log(error)
         } finally {
             setLoading(false);
         }

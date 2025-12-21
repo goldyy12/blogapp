@@ -1,57 +1,74 @@
-import prisma from "../db.js";
-import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-export const register = async (req, res) => {
-    const { username, email, password } = req.body;
+import bcrypt from "bcryptjs";
+import prisma from "../db.js";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+    console.error("JWT_SECRET is missing!");
+    process.exit(1);
+}
+
+
+export const register = async (req, res) => {
     try {
+        const { username, email, password } = req.body;
+
+        if (!username || !email || !password) {
+            return res.status(400).json({ error: "All fields are required" });
+        }
+        if (password.length < 7) return res.status(400).json({ error: "The password must contain 8 letters" });
+
+
+        const existingUser = await prisma.user.findUnique({ where: { email } });
+        if (existingUser) {
+            return res.status(400).json({ error: "Email already exists" });
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = await prisma.user.create({
-            data: { username, email, password: hashedPassword },
+            data: { username, email, password: hashedPassword }
         });
 
-
         const token = jwt.sign(
-            {
-                userId: user.id, role: user.role, username: user.username,
-                email: user.email
-            },
-            process.env.JWT_SECRET,
+            { userId: user.id, username: user.username, email: user.email, role: user.role || "USER" },
+            JWT_SECRET,
             { expiresIn: "1h" }
         );
 
-        res.status(201).json({
-            message: "User registered",
-            token,
-            user: {
-                id: user.id,
-                username: user.username,
-                email: user.email
-            }
-        });
+        res.json({ token });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        console.error("Register error:", error);
+        res.status(500).json({ error: "Could not register user" });
     }
 };
 
+
 export const login = async (req, res) => {
-    const { email, password } = req.body;
     try {
+        const { email, password } = req.body;
+
+        if (!email || !password) return res.status(400).json({ error: "All fields are required" });
+
+
         const user = await prisma.user.findUnique({ where: { email } });
         if (!user) return res.status(400).json({ error: "Invalid credentials" });
 
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) return res.status(400).json({ error: "Invalid credentials" });
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
-        const token = jwt.sign({
-            userId: user.id, role: user.role, username: user.username, userId: user.id,
-            email: user.email
-        }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign(
+            { userId: user.id, username: user.username, email: user.email, role: user.role || "USER" },
+            JWT_SECRET,
+            { expiresIn: "1h" }
+        );
+
         res.json({ token });
     } catch (error) {
-        console.log("REGISTER ERROR:", error);
-        res.status(500).json({ error: error.message });
+        console.error("Login error:", error);
+        res.status(500).json({ error: "Could not login" });
     }
 };
-

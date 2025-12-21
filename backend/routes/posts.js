@@ -19,10 +19,14 @@ function requireAuthor(req, res, next) {
     next();
 }
 
-router.get("/", getPosts);
-
-router.get("/:id", getPost);
 router.get("/user/:userId", getPostsByUser);
+router.get("/", getPosts);
+router.get("/:id", getPost);
+
+
+
+
+
 
 router.delete("/:id", authenticateToken, deletePost);
 

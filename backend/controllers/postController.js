@@ -53,13 +53,12 @@ export const createPost = async (req, res) => {
             data: { title, content, userId: req.user.userId },
         });
         res.status(201).json(post);
-    } catch (error) {
-        if (error.code === "P2002") {
-            return res.status(400).json({ error: "Email already exists" });
-        }
-        res.status(500).json({ error: "Failed to register user" });
     }
-};
+    catch (error) {
+        console.error("createPost error:", error);
+        res.status(500).json({ error: "Could not create post" });
+    }
+}
 
 export const updatePost = async (req, res) => {
     const id = parseInt(req.params.id);
@@ -112,4 +111,4 @@ export const publishPost = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-};
+}

@@ -102,7 +102,7 @@ export default function Posts() {
 
 
             <div className={styles.title}>
-                <h2>Last Posts</h2>
+                <h2 className={styles.last}>Last Posts</h2>
 
                 <div className={styles.postcontainer}>
                     {posts.map((post) => (

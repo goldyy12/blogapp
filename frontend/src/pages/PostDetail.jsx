@@ -13,7 +13,7 @@ export default function PostDetail() {
     const [isLoading, setIsLoading] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // 🔹 Fetch post
+
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -29,7 +29,7 @@ export default function PostDetail() {
         fetchPost();
     }, [id]);
 
-    // 🔹 Add comment
+
     const addComment = async (e) => {
         e.preventDefault();
         if (!comment.trim()) return;
@@ -81,6 +81,7 @@ export default function PostDetail() {
                 ...prev,
                 comments: prev.comments.filter((c) => c.id !== commentId),
             }));
+            console.log(post)
         } catch (err) {
             console.error(err);
         }

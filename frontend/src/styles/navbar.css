@@ -11,9 +11,15 @@
     justify-content: space-between;
 }
 
-.logo h4 {
+.logo h3 {
     color: white;
     margin: 0;
+
+    color: #71b1ff;
+}
+
+.logo {
+    text-decoration: none;
 }
 
 /* LINKS */
@@ -36,7 +42,7 @@
     color: white;
 }
 
-/* animated underline */
+
 .nav-link::after {
     content: "";
     position: absolute;
@@ -58,7 +64,7 @@
     box-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
 }
 
-/* write post button */
+
 .writepost {
     padding: 6px 14px;
     border-radius: 8px;
@@ -70,7 +76,7 @@
     display: none;
 }
 
-/* USER MENU */
+
 .menu-container {
     position: relative;
 }
