@@ -11,12 +11,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+import cors from "cors";
+
+app.use(cors({
+    origin: "https://blogapp-fama-git-main-diar-selmanis-projects.vercel.app",
+    credentials: true,
+}));
 app.use("/auth", authRoutes);
 app.use("/posts", postRoutes);
 app.use("/posts/:id/comments", commentRoutes);
-app.get("/", (req, res) => {
-    res.json({ status: "ok" });
-});
+
 
 const PORT = process.env.PORT || 8080;
 

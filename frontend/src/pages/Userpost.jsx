@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import api from "../api"; // use the central axios instance
 import "../styles/userposts.css";
-import { useNavigate } from "react-router-dom";
-
 
 export default function UserPosts() {
     const navigate = useNavigate();
-
     const { userId } = useParams();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -19,10 +16,9 @@ export default function UserPosts() {
         setLoading(true);
         setError("");
         try {
-            const res = await axios.get(
-                `http://localhost:5000/posts/user/${userId}`,
-                { headers: { Authorization: `Bearer ${token}` } }
-            );
+            const res = await api.get(`/posts/user/${userId}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
             setPosts(res.data);
         } catch (err) {
             console.error(err);
@@ -38,8 +34,8 @@ export default function UserPosts() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/posts/${id}`, {
-                headers: { Authorization: `Bearer ${token}` }
+            await api.delete(`/posts/${id}`, {
+                headers: { Authorization: `Bearer ${token}` },
             });
             fetchUserPosts();
         } catch (err) {
