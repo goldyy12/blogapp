@@ -1,4 +1,4 @@
-import prisma from "../db.js";
+const prisma = require("./db");
 
 export const getPosts = async (req, res) => {
     try {

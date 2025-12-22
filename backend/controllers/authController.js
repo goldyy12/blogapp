@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import prisma from "../db.js";
+const prisma = require("./db");
 import dotenv from "dotenv";
 
 dotenv.config();

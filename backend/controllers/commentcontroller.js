@@ -1,4 +1,4 @@
-import prisma from "../db.js";
+const prisma = require("./db");
 
 export const getComments = async (req, res) => {
     const postId = parseInt(req.params.id);
