@@ -1,6 +1,6 @@
 // db.js
 import prismaPkg from "@prisma/client";
-import adapterPkg from "@prisma/adapter-pg";
+import * as adapterPkg from "@prisma/adapter-pg";
 import dotenv from "dotenv";
 
 dotenv.config();
