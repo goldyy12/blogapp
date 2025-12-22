@@ -84,12 +84,14 @@ export default function Posts() {
                 </div>
             </div>
 
-            {loading && <p>Loading...</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {posts.length === 0 && !loading && !error && <p>No posts yet, add one!</p>}
+
 
             <div className={styles.title}>
                 <h2 className={styles.last}>Last Posts</h2>
+                {loading && <p>Loading...</p>}
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                {posts.length === 0 && !loading && !error && <p>No posts yet, add one!</p>}
+
                 <div className={styles.postcontainer}>
                     {posts.map((post) => (
                         <div key={post.id} className={styles.posts}>
