@@ -1,4 +1,4 @@
-const prisma = require("./db");
+import prisma from "../db.js";
 
 export const getPosts = async (req, res) => {
     try {
@@ -81,22 +81,22 @@ export const deletePost = async (req, res) => {
 
     try {
         const post = await prisma.post.findUnique({ where: { id } });
+
         if (!post) return res.status(404).json({ error: "Post not found" });
 
-        const isOwner = post.userId === req.user.userId;
-        const isAdmin = req.user.role === "AUTHOR";
 
-        if (!isOwner && !isAdmin) {
+        if (post.userId !== req.user.userId && req.user.role !== "AUTHOR") {
             return res.status(403).json({ error: "Not allowed" });
         }
 
+
         await prisma.post.delete({ where: { id } });
+
         res.status(204).send();
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 
 export const publishPost = async (req, res) => {

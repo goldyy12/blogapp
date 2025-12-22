@@ -1,3 +1,6 @@
-const { PrismaClient } = require('@prisma/client');
+// db.js (ESM mode)
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg;
+
 const prisma = new PrismaClient();
-module.exports = prisma;
+export default prisma;
