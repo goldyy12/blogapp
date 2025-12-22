@@ -19,7 +19,7 @@ export const register = async (req, res) => {
         if (!username || !email || !password) {
             return res.status(400).json({ error: "All fields are required" });
         }
-        if (password.length < 7) return res.status(400).json({ error: "The password must contain 8 letters" });
+        if (password.length < 8) return res.status(400).json({ error: "The password must contain 8 letters" });
 
 
         const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -39,7 +39,16 @@ export const register = async (req, res) => {
             { expiresIn: "1h" }
         );
 
-        res.json({ token });
+        res.status(201).json({
+            token,
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                role: user.role || "USER",
+            },
+        });
+
     } catch (error) {
         console.error("Register error:", error);
         res.status(500).json({ error: "Could not register user" });
