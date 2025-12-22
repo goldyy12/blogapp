@@ -46,7 +46,7 @@ export default function Addpost() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                <input
+                <textarea
                     placeholder="Content"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
