@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../api"; // use the axios instance
 import "../styles/addpost.css";
 
 export default function Addpost() {
@@ -8,7 +8,6 @@ export default function Addpost() {
     const [content, setContent] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-
     const navigate = useNavigate();
 
     const addPost = async (e) => {
@@ -17,19 +16,21 @@ export default function Addpost() {
         setLoading(true);
 
         try {
-            await axios.post(
-                "http://localhost:5000/posts",
+            await api.post(
+                "/posts",
                 { title, content },
                 {
-                    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
                 }
             );
 
             setTitle("");
             setContent("");
             navigate("/posts");
-        } catch (error) {
-            setError(error.response?.data?.message || "Adding post failed");
+        } catch (err) {
+            setError(err.response?.data?.message || "Adding post failed");
         } finally {
             setLoading(false);
         }
@@ -45,20 +46,16 @@ export default function Addpost() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-
                 <input
-
                     placeholder="Content"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     className="content"
                 />
-
                 <button type="submit" disabled={loading}>
                     {loading ? "Adding..." : "Add Post"}
                 </button>
             </form>
-
             {error && <p className="error">{error}</p>}
         </div>
     );

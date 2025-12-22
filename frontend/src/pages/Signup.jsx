@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import api from "../api"; // use Axios instance
 
 export default function Register() {
     const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
-    const { user, setUser } = useContext(AuthContext);
+    const { setUser } = useContext(AuthContext);
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ export default function Register() {
         setLoading(true);
 
         try {
-            const res = await axios.post("http://localhost:5000/auth/register", {
+            const res = await api.post("/auth/register", {
                 email,
                 password,
                 username,
@@ -28,7 +28,6 @@ export default function Register() {
             // Save token and update user state for auto-login
             localStorage.setItem("token", res.data.token);
             setUser(res.data.user);
-            console.log("Register payload:", { email, password });
 
             navigate("/posts"); // redirect to posts after signup
         } catch (error) {
@@ -48,19 +47,22 @@ export default function Register() {
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                /><br />
+                />
+                <br />
                 <input
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                /><br />
+                />
+                <br />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                /><br />
+                />
+                <br />
                 <button type="submit" disabled={loading}>
                     {loading ? "Registering..." : "Register"}
                 </button>

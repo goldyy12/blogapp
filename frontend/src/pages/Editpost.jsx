@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api"; // import the axios instance
 import "../styles/addpost.css";
 import { AuthContext } from "../context/AuthContext";
 
@@ -25,19 +25,15 @@ export default function EditPost() {
                 return;
             }
             try {
-                const res = await axios.get(`http://localhost:5000/posts/${id}`, {
+                const res = await api.get(`/posts/${id}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-
-
 
                 setTitle(res.data.title || "");
                 setContent(res.data.content || "");
             } catch (err) {
                 const msg =
-                    err.response?.data?.error ||
-                    err.message ||
-                    "Failed to load post.";
+                    err.response?.data?.error || err.message || "Failed to load post.";
                 setError(msg);
             } finally {
                 setLoading(false);
@@ -55,18 +51,15 @@ export default function EditPost() {
         setSaving(true);
         setError("");
         try {
-            await axios.put(
-                `http://localhost:5000/posts/${id}`,
+            await api.put(
+                `/posts/${id}`,
                 { title, content },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            console.log(user)
             navigate(`/posts/user/${user.userId}`);
         } catch (err) {
             const msg =
-                err.response?.data?.error ||
-                err.message ||
-                "Failed to update post.";
+                err.response?.data?.error || err.message || "Failed to update post.";
             setError(msg);
         } finally {
             setSaving(false);
@@ -95,7 +88,11 @@ export default function EditPost() {
                     rows={6}
                     required
                 />
-                <button type="submit" disabled={saving || !title || !content} className="form-button">
+                <button
+                    type="submit"
+                    disabled={saving || !title || !content}
+                    className="form-button"
+                >
                     {saving ? "Saving..." : "Save Changes"}
                 </button>
             </form>

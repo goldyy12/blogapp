@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import "../styles/login.css"
+import api from "../api"; // <-- use Axios instance
+import "../styles/login.css";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -19,16 +19,12 @@ export default function Login() {
         setLoading(true);
 
         try {
-            const res = await axios.post(
-                "http://localhost:5000/auth/login",
-                { email, password }
-            );
-
+            const res = await api.post("/auth/login", { email, password });
             login(res.data.token);
             navigate("/posts");
-        } catch (error) {
-            setError(error.response?.data?.error || "Login failed");
-            console.log(error)
+        } catch (err) {
+            setError(err.response?.data?.error || "Login failed");
+            console.log(err);
         } finally {
             setLoading(false);
         }
@@ -37,7 +33,6 @@ export default function Login() {
     return (
         <div style={{ maxWidth: "300px", margin: "auto", marginTop: "70px" }}>
             <h1>Login</h1>
-
             <form onSubmit={handleLogin}>
                 <input
                     type="email"
@@ -46,7 +41,6 @@ export default function Login() {
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <br />
-
                 <input
                     type="password"
                     placeholder="Password"
@@ -54,18 +48,15 @@ export default function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <br />
-
                 <button type="submit" disabled={loading}>
                     {loading ? "Logging in..." : "Login"}
                 </button>
-
                 <div>
                     <Link to="/signup">
-                        <button type="button" >Signup</button>
+                        <button type="button">Signup</button>
                     </Link>
                 </div>
             </form>
-
             {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );
