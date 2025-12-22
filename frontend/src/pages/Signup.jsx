@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Register() {
     const [email, setEmail] = useState("");
@@ -10,7 +9,9 @@ export default function Register() {
     const [username, setUsername] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
+    const { user, setUser } = useContext(AuthContext);
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -19,11 +20,17 @@ export default function Register() {
 
         try {
             const res = await axios.post("http://localhost:5000/auth/register", {
-                email, password, username,
+                email,
+                password,
+                username,
             });
+
+            // Save token and update user state for auto-login
             localStorage.setItem("token", res.data.token);
-            alert("Register success");
-            navigate("/");
+            setUser(res.data.user);
+            console.log("Register payload:", { email, password });
+
+            navigate("/posts"); // redirect to posts after signup
         } catch (error) {
             console.error(error);
             setError(error.response?.data?.error || "Register failed");

@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import "../styles/userposts.css"; // create a separate CSS for posts
+import "../styles/userposts.css";
+import { useNavigate } from "react-router-dom";
+
 
 export default function UserPosts() {
+    const navigate = useNavigate();
+
     const { userId } = useParams();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -69,6 +73,12 @@ export default function UserPosts() {
                         <small>By: {post.user?.email}</small>
                         <button className="delete-btn" onClick={() => handleDelete(post.id)}>
                             Delete
+                        </button>
+                        <button
+                            className="edit-btn"
+                            onClick={() => navigate(`/posts/${post.id}/edit`)}
+                        >
+                            Edit
                         </button>
                     </div>
                 ))}

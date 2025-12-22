@@ -92,9 +92,7 @@ label {
     background-color: #0056b3;
 }
 
-/* =========================
-   COMMENTS LIST
-========================= */
+
 .comments {
     list-style: none;
     padding: 0;
@@ -103,8 +101,9 @@ label {
 
 }
 
-/* Comment card */
+
 .comment {
+    list-style: none;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 10px;

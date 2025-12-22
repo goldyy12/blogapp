@@ -82,16 +82,18 @@
 }
 
 .primary-btn,
-.delete-btn {
+.delete-btn,
+.edit-btn {
     width: auto;
-    /* change from 100% to auto */
+
     padding: 8px 16px;
-    /* add horizontal padding for nice size */
+
     display: inline-block;
-    /* ensure it only takes needed space */
+
     font-size: 1rem;
     border-radius: 8px;
     cursor: pointer;
+    margin: 5px;
 }
 
 .primary-btn:hover {
@@ -105,4 +107,14 @@
 
 .delete-btn:hover {
     background-color: #800016;
+}
+
+.edit-btn {
+    background-color: #073f10;
+    color: rgb(16, 90, 6);
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #04391c;
 }

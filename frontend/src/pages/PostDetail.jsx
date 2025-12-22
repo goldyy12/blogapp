@@ -4,7 +4,13 @@ import { useEffect, useState, useContext } from "react";
 import styles from "../styles/Postdetail.module.css";
 import { AuthContext } from "../context/AuthContext";
 
+
+
+
+
+
 export default function PostDetail() {
+
     const { user } = useContext(AuthContext);
     const { id } = useParams();
 
@@ -143,6 +149,10 @@ export default function PostDetail() {
                         {isSubmitting ? "Posting..." : "Add Comment"}
                     </button>
                 </form>
+                {(!post.comments || post.comments.length === 0) && <h4>No comments in this post , add a comment</h4>}
+
+
+
 
                 {post.comments.map((c) => {
                     const isOwner = user?.userId === c.userId;
@@ -169,12 +179,17 @@ export default function PostDetail() {
                                 </span>
 
                                 {isOwner && (
-                                    <button
-                                        className={styles.deleteComment}
-                                        onClick={() => handleDeleteComment(c.id)}
-                                    >
-                                        Delete
-                                    </button>
+                                    <>
+                                        <button
+                                            className={styles.deleteComment}
+                                            onClick={() => handleDeleteComment(c.id)}
+                                        >
+                                            Delete
+                                        </button>
+
+
+                                    </>
+
                                 )}
                             </div>
 
