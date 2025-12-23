@@ -13,10 +13,6 @@ app.use(express.json());
 
 import cors from "cors";
 
-app.use(cors({
-    origin: "https://blogapp-fama-git-main-diar-selmanis-projects.vercel.app",
-    credentials: true,
-}));
 app.use("/auth", authRoutes);
 app.use("/posts", postRoutes);
 app.use("/posts/:id/comments", commentRoutes);
