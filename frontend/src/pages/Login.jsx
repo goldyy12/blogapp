@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import api from "../api";
+import api from "../api"; // <-- use Axios instance
 import "../styles/login.css";
 
 export default function Login() {
@@ -24,16 +24,16 @@ export default function Login() {
             navigate("/posts");
         } catch (err) {
             setError(err.response?.data?.error || "Login failed");
+            console.log(err);
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="login-container">
-            <div className="auth-box">
-                <h2>Login</h2>
-
+        <div className="logincontainer">
+            <div style={{ maxWidth: "300px", margin: "auto", marginTop: "70px", }}>
+                <h1>Login</h1>
                 <form onSubmit={handleLogin}>
                     <input
                         type="email"
@@ -41,25 +41,23 @@ export default function Login() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-
+                    <br />
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-
+                    <br />
                     <button type="submit" disabled={loading}>
                         {loading ? "Logging in..." : "Login"}
                     </button>
+                    <div>
+                        <Link to="/signup">
+                            <button type="button">Signup</button>
+                        </Link>
+                    </div>
                 </form>
-
-                <div className="auth-link">
-                    <Link to="/signup">
-                        <button type="button">Create account</button>
-                    </Link>
-                </div>
-
                 {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
         </div>

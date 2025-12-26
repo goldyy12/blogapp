@@ -18,20 +18,11 @@ form {
     align-items: center;
 }
 
-.login-container {
+.container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.auth-box {
-    width: 100%;
-    max-width: 320px;
-    padding: 24px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 
