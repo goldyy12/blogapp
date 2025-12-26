@@ -40,7 +40,7 @@ export default function Register() {
 
     return (
         <div style={{ maxWidth: "300px", margin: "0 auto", marginTop: "70px" }}>
-            <h2>Register</h2>
+            <h1>Register</h1>
             <form onSubmit={handleRegister}>
                 <input
                     type="text"
