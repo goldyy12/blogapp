@@ -24,11 +24,12 @@ function App() {
 
 
       <Routes>
+        <Route path="/posts" element={<Posts />} />
         <Route path="/" element={<Navigate to="/posts" replace />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/posts" element={<Posts />} />
+
         <Route path="/posts/:id" element={<PostDetail />} />
 
         <Route path="/posts/user/:userId" element={<UserPosts />} />
