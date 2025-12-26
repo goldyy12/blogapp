@@ -1,10 +1,9 @@
-/* General font */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f5f5f5;
 }
 
-/* Form container */
+
 form {
     display: flex;
     flex-direction: column;
@@ -16,16 +15,24 @@ form {
     margin: 30px auto;
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
-/* Headline */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 form h2 {
     text-align: center;
     color: #123da9;
     margin-bottom: 15px;
 }
 
-/* Input fields */
+
 input {
     padding: 12px;
     border-radius: 8px;
@@ -41,7 +48,7 @@ input:focus {
     border: 1px solid #123da9;
 }
 
-/* Primary buttons (Login, Submit) */
+
 button {
     padding: 12px;
     background-color: #123da9;
@@ -64,12 +71,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Links that contain buttons (Signup, secondary buttons) */
 form a button {
     background-color: #ccc;
     color: #123da9;
     width: 100%;
-    /* make full width */
     padding: 12px;
     border-radius: 10px;
     border: none;
@@ -93,7 +98,6 @@ form a button:hover {
     text-align: center;
 }
 
-/* Small text under form */
 .dont {
     color: #555;
     text-align: center;

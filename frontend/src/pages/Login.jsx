@@ -30,34 +30,44 @@ export default function Login() {
         }
     };
 
+
+
     return (
-        <div style={{ maxWidth: "300px", margin: "auto", marginTop: "70px" }}>
-            <h1>Login</h1>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <br />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <br />
-                <button type="submit" disabled={loading}>
-                    {loading ? "Logging in..." : "Login"}
-                </button>
-                <div>
-                    <Link to="/signup">
-                        <button type="button">Signup</button>
-                    </Link>
-                </div>
-            </form>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+        <div className="login-container">
+            <div style={{ maxWidth: "300px", width: "100%" }}>
+                <h1>Login</h1>
+
+                <form onSubmit={handleLogin}>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <br />
+
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <br />
+
+                    <button type="submit" disabled={loading}>
+                        {loading ? "Logging in..." : "Login"}
+                    </button>
+
+                    <div>
+                        <Link to="/signup">
+                            <button type="button">Signup</button>
+                        </Link>
+                    </div>
+                </form>
+
+                {error && <p style={{ color: "red" }}>{error}</p>}
+            </div>
         </div>
     );
 }
+
