@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import api from "../api"; // <-- use Axios instance
-import styles from "../styles/ostdetail.module.css";
+import api from "../api"; 
+import styles from "../styles/postdetail.module.css";
 
 export default function PostDetail() {
     const { user } = useContext(AuthContext);
