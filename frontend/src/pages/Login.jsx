@@ -32,7 +32,7 @@ export default function Login() {
 
     return (
         <div className="logincontainer">
-            <div style={{ maxWidth: "300px", margin: "auto", marginTop: "70px", }}>
+            <div style={{ maxWidth: "300px", margin: "0 auto", marginTop: "70px", }}>
                 <h1>Login</h1>
                 <form onSubmit={handleLogin}>
                     <input
