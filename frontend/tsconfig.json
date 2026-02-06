@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler", // Crucial for Vite to find your modules
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Tells TS you're in a browser
+    "types": ["node"],
+
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+
+    /* React / Vite Specifics */
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+    "noEmit": true, // Vite handles the building, not the TS compiler
+
+    /* Output */
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": ["src"] // Tells TS to look inside your src folder
+}

@@ -1,9 +1,9 @@
 import express from "express";
 import {
-    getComments,
-    createComment,
-    updateComment,
-    deleteComment
+  getComments,
+  createComment,
+  updateComment,
+  deleteComment,
 } from "../controllers/commentcontroller.js"; // ensure correct filename/casing
 import { authenticateToken } from "../middleware/auth.js";
 

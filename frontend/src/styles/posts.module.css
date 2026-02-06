@@ -1,93 +1,83 @@
 .posts {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    max-height: 290px;
-
-
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  max-height: 290px;
 }
-
 
 .section {
-    background: linear-gradient(135deg,
-            #0b1324 0%,
-            #1c2a4a 45%,
-            #0b1324 100%);
-    color: white;
-    margin: 0 auto;
-    padding: 60px 24px;
+  background: linear-gradient(135deg, #0b1324 0%, #1c2a4a 45%, #0b1324 100%);
+  color: white;
+  margin: 0 auto;
+  padding: 60px 24px;
 }
 
-
-
 .welcome {
-    background-color: rgba(54, 65, 83);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    max-width: 700px;
-    ;
+  background-color: rgba(54, 65, 83);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  max-width: 700px;
 }
 
 .btnPrimary {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    display: inline-block;
-    transition: background 0.2s ease;
-    margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  display: inline-block;
+  transition: background 0.2s ease;
+  margin-right: 10px;
 }
 
 .btnPrimary:hover {
-    background-color: #0056b3;
-
+  background-color: #0056b3;
 }
 
 .btnSecondary {
-    background-color: transparent;
-    color: white;
-    padding: 10px 20px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    transition: border-color 0.2s ease, color 0.2s ease;
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .btnSecondary:hover {
-    border-color: #999;
-    color: #000;
+  border-color: #999;
+  color: #000;
 }
 
 .postcontainer {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 32px 24px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 32px 24px;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
 
 .posts {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 12px;
-    background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
 }
-
-
 
 .title,
 .sectioncontent {
-    max-width: 1300px;
-    margin: 0 auto;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 /*.postcontainer {
@@ -100,48 +90,54 @@
     gap: 24px;
 }*/
 
-
 .postuser {
-    display: flex;
-    justify-content: space-between;
-
+  display: flex;
+  justify-content: space-between;
 }
 
 .posts h3 {
-    font-size: larger;
-    font-weight: 900;
+  font-size: larger;
+  font-weight: 900;
 }
 
 .posts a {
-    text-decoration: none;
-    color: #1772d3;
+  text-decoration: none;
+  color: #1772d3;
 
-    font-weight: bolder;
-
+  font-weight: bolder;
 }
 
-
-
 .divider {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.06);
-    margin: 15px 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.06);
+  margin: 15px 0;
 }
 
 .name,
 .date {
-    color: rgba(0, 0, 0, 0.5);
-
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .share {
-    font-size: 45px;
-    font-weight: bold;
+  font-size: 45px;
+  font-weight: bold;
 }
 
 .last {
-    margin-left: 30px;
-    margin-bottom: 0;
+  margin-left: 30px;
+  margin-bottom: 0;
+}
+.postContent {
+  font-size: 0.95rem; /* Smaller, readable font */
+  color: #353434;
+  line-height: 1.5;
+  margin-bottom: 15px;
 
+  /* This magic code cuts off text after 3 lines so boxes stay even */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

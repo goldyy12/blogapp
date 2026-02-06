@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*", "node_modules/*"]
+    },
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "ES2022",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "sourceMap": true
+  },
+  "include": ["**/*.ts", "**/*.tsx", "types/**/*.d.ts"]
+}
